@@ -1,7 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  compiler: {
+    relay: {
+      src: "./app",
+      artifactDirectory: "./app/__generated__",
+      language: "typescript",
+      eagerEsModules: false,
+    },
+  },
 };
 
 export default nextConfig;
