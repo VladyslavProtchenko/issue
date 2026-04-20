@@ -1,7 +1,7 @@
 import { Environment, Network, RecordSource, Store } from 'relay-runtime';
 
-const URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
 if (!URL || !KEY) {
   throw new Error('Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY');

@@ -626,6 +626,9 @@ type comments implements Node {
 type commentsConnection {
   edges: [commentsEdge!]!
   pageInfo: PageInfo!
+
+  """The total number of records matching the `filter` criteria"""
+  totalCount: Int!
 }
 
 type commentsDeleteResponse {

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<d42097ecdb326d94165953e0100c4b5d>>
+ * @generated SignedSource<<8c1dfed73c5e19c6b87e38da11147c53>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -73,54 +73,56 @@ export type DatetimeFilter = {
 export type IDFilter = {
   eq?: string | null | undefined;
 };
-export type IssueListQuery$variables = {
+export type IssueListContentPaginationQuery$variables = {
   after?: string | null | undefined;
   filter?: issuesFilter | null | undefined;
-  first: number;
+  first?: number | null | undefined;
 };
-export type IssueListQuery$data = {
+export type IssueListContentPaginationQuery$data = {
   readonly " $fragmentSpreads": FragmentRefs<"IssueListContent_query">;
 };
-export type IssueListQuery = {
-  response: IssueListQuery$data;
-  variables: IssueListQuery$variables;
+export type IssueListContentPaginationQuery = {
+  response: IssueListContentPaginationQuery$data;
+  variables: IssueListContentPaginationQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){
-var v0 = {
-  "defaultValue": null,
-  "kind": "LocalArgument",
-  "name": "after"
-},
+var v0 = [
+  {
+    "defaultValue": null,
+    "kind": "LocalArgument",
+    "name": "after"
+  },
+  {
+    "defaultValue": null,
+    "kind": "LocalArgument",
+    "name": "filter"
+  },
+  {
+    "defaultValue": 10,
+    "kind": "LocalArgument",
+    "name": "first"
+  }
+],
 v1 = {
-  "defaultValue": null,
-  "kind": "LocalArgument",
-  "name": "filter"
-},
-v2 = {
-  "defaultValue": null,
-  "kind": "LocalArgument",
-  "name": "first"
-},
-v3 = {
   "kind": "Variable",
   "name": "after",
   "variableName": "after"
 },
-v4 = {
+v2 = {
   "kind": "Variable",
   "name": "filter",
   "variableName": "filter"
 },
-v5 = {
+v3 = {
   "kind": "Variable",
   "name": "first",
   "variableName": "first"
 },
-v6 = [
+v4 = [
+  (v1/*: any*/),
+  (v2/*: any*/),
   (v3/*: any*/),
-  (v4/*: any*/),
-  (v5/*: any*/),
   {
     "kind": "Literal",
     "name": "orderBy",
@@ -131,21 +133,21 @@ v6 = [
     ]
   }
 ],
-v7 = {
+v5 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "nodeId",
   "storageKey": null
 },
-v8 = {
+v6 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "id",
   "storageKey": null
 },
-v9 = {
+v7 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
@@ -154,20 +156,16 @@ v9 = {
 };
 return {
   "fragment": {
-    "argumentDefinitions": [
-      (v0/*: any*/),
-      (v1/*: any*/),
-      (v2/*: any*/)
-    ],
+    "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "IssueListQuery",
+    "name": "IssueListContentPaginationQuery",
     "selections": [
       {
         "args": [
-          (v3/*: any*/),
-          (v4/*: any*/),
-          (v5/*: any*/)
+          (v1/*: any*/),
+          (v2/*: any*/),
+          (v3/*: any*/)
         ],
         "kind": "FragmentSpread",
         "name": "IssueListContent_query"
@@ -178,17 +176,13 @@ return {
   },
   "kind": "Request",
   "operation": {
-    "argumentDefinitions": [
-      (v2/*: any*/),
-      (v0/*: any*/),
-      (v1/*: any*/)
-    ],
+    "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "IssueListQuery",
+    "name": "IssueListContentPaginationQuery",
     "selections": [
       {
         "alias": null,
-        "args": (v6/*: any*/),
+        "args": (v4/*: any*/),
         "concreteType": "issuesConnection",
         "kind": "LinkedField",
         "name": "issuesCollection",
@@ -210,8 +204,8 @@ return {
                 "name": "node",
                 "plural": false,
                 "selections": [
-                  (v7/*: any*/),
-                  (v8/*: any*/),
+                  (v5/*: any*/),
+                  (v6/*: any*/),
                   {
                     "alias": null,
                     "args": null,
@@ -248,7 +242,7 @@ return {
                     "name": "assignee",
                     "plural": false,
                     "selections": [
-                      (v9/*: any*/),
+                      (v7/*: any*/),
                       {
                         "alias": null,
                         "args": null,
@@ -256,7 +250,7 @@ return {
                         "name": "avatar_url",
                         "storageKey": null
                       },
-                      (v7/*: any*/)
+                      (v5/*: any*/)
                     ],
                     "storageKey": null
                   },
@@ -292,8 +286,8 @@ return {
                                 "name": "labels",
                                 "plural": false,
                                 "selections": [
-                                  (v8/*: any*/),
-                                  (v9/*: any*/),
+                                  (v6/*: any*/),
+                                  (v7/*: any*/),
                                   {
                                     "alias": null,
                                     "args": null,
@@ -301,11 +295,11 @@ return {
                                     "name": "color",
                                     "storageKey": null
                                   },
-                                  (v7/*: any*/)
+                                  (v5/*: any*/)
                                 ],
                                 "storageKey": null
                               },
-                              (v7/*: any*/)
+                              (v5/*: any*/)
                             ],
                             "storageKey": null
                           }
@@ -365,7 +359,7 @@ return {
       },
       {
         "alias": null,
-        "args": (v6/*: any*/),
+        "args": (v4/*: any*/),
         "filters": [
           "filter",
           "orderBy"
@@ -378,16 +372,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "0ffb51a44b24cb740ca052704d5fb4a3",
+    "cacheID": "26a656746d7c2978092854d145f5edee",
     "id": null,
     "metadata": {},
-    "name": "IssueListQuery",
+    "name": "IssueListContentPaginationQuery",
     "operationKind": "query",
-    "text": "query IssueListQuery(\n  $first: Int!\n  $after: Cursor\n  $filter: issuesFilter\n) {\n  ...IssueListContent_query_G9cLv\n}\n\nfragment IssueListContent_query_G9cLv on Query {\n  issuesCollection(first: $first, after: $after, filter: $filter, orderBy: [{created_at: DescNullsLast}]) {\n    edges {\n      node {\n        nodeId\n        id\n        title\n        status\n        priority\n        created_at\n        assignee {\n          name\n          avatar_url\n          nodeId\n        }\n        issue_labelsCollection {\n          edges {\n            node {\n              labels {\n                id\n                name\n                color\n                nodeId\n              }\n              nodeId\n            }\n          }\n        }\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
+    "text": "query IssueListContentPaginationQuery(\n  $after: Cursor\n  $filter: issuesFilter\n  $first: Int = 10\n) {\n  ...IssueListContent_query_G9cLv\n}\n\nfragment IssueListContent_query_G9cLv on Query {\n  issuesCollection(first: $first, after: $after, filter: $filter, orderBy: [{created_at: DescNullsLast}]) {\n    edges {\n      node {\n        nodeId\n        id\n        title\n        status\n        priority\n        created_at\n        assignee {\n          name\n          avatar_url\n          nodeId\n        }\n        issue_labelsCollection {\n          edges {\n            node {\n              labels {\n                id\n                name\n                color\n                nodeId\n              }\n              nodeId\n            }\n          }\n        }\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "9cb9ae256a0fb9c0e1c035688bd8351c";
+(node as any).hash = "d5cbeede6f60bd43c7f8cc95b6db9e56";
 
 export default node;
