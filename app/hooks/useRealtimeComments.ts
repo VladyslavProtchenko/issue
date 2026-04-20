@@ -48,7 +48,13 @@ export function useRealtimeComments(issueId: string, issueNodeId: string) {
             const connection = ConnectionHandler.getConnection(issueRecord, 'CommentThread_comments');
             if (!connection) return;
 
-            // Skip if already present in the connection (added by mutation updater)
+            // Always update totalCount (even if record already in connection from mutation)
+            const prev = connection.getValue('totalCount');
+            if (typeof prev === 'number') {
+              connection.setValue(prev + 1, 'totalCount');
+            }
+
+            // Skip adding edge if already present (added by mutation)
             const edges = connection.getLinkedRecords('edges') ?? [];
             const inConnection = edges.some(
               (edge) => edge?.getLinkedRecord('node')?.getValue('nodeId') === nodeId,

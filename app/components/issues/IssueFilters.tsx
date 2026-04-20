@@ -11,8 +11,9 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { ChevronDown, X } from 'lucide-react';
 import { useLabels } from '@/app/hooks/useLabels';
+import type { issue_status, issue_priority } from '../../__generated__/IssueListQuery.graphql';
 
-const STATUSES = [
+const STATUSES: { value: issue_status; label: string }[] = [
   { value: 'backlog', label: 'Backlog' },
   { value: 'todo', label: 'Todo' },
   { value: 'in_progress', label: 'In Progress' },
@@ -20,7 +21,7 @@ const STATUSES = [
   { value: 'cancelled', label: 'Cancelled' },
 ];
 
-const PRIORITIES = [
+const PRIORITIES: { value: issue_priority; label: string }[] = [
   { value: 'urgent', label: 'Urgent' },
   { value: 'high', label: 'High' },
   { value: 'medium', label: 'Medium' },
@@ -29,8 +30,8 @@ const PRIORITIES = [
 ];
 
 export interface IssueFiltersValue {
-  statuses: string[];
-  priorities: string[];
+  statuses: issue_status[];
+  priorities: issue_priority[];
   labelIds: string[];
 }
 
@@ -44,14 +45,14 @@ export function IssueFilters({ value, onChange }: IssueFiltersProps) {
 
   const hasFilters = value.statuses.length > 0 || value.priorities.length > 0 || value.labelIds.length > 0;
 
-  function toggleStatus(status: string) {
+  function toggleStatus(status: issue_status) {
     const next = value.statuses.includes(status)
       ? value.statuses.filter((s) => s !== status)
       : [...value.statuses, status];
     onChange({ ...value, statuses: next });
   }
 
-  function togglePriority(priority: string) {
+  function togglePriority(priority: issue_priority) {
     const next = value.priorities.includes(priority)
       ? value.priorities.filter((p) => p !== priority)
       : [...value.priorities, priority];

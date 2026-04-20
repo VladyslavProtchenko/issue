@@ -1,6 +1,3 @@
-// Hardcoded current user for demo purposes (no auth)
-export const CURRENT_USER_ID = '00000000-0000-0000-0000-000000000000';
-
 export const STATUS_LABEL: Record<string, string> = {
   backlog: 'Backlog',
   todo: 'Todo',

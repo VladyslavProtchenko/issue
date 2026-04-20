@@ -1,4 +1,4 @@
-import { Environment, Network, RecordSource, Store } from 'relay-runtime';
+import { Environment, Network, RecordSource, Store, type FetchFunction } from 'relay-runtime';
 
 const URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
@@ -9,7 +9,7 @@ if (!URL || !KEY) {
 
 const GRAPHQL_URL = `${URL}/graphql/v1`;
 
-async function fetchFn(request: { text: string | null }, variables: Record<string, unknown>) {
+const fetchFn: FetchFunction = async (request, variables) => {
   const response = await fetch(GRAPHQL_URL, {
     method: 'POST',
     headers: {

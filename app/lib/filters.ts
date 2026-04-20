@@ -1,7 +1,8 @@
 import type { IssueFiltersValue } from '../components/issues/IssueFilters';
+import type { issuesFilter } from '../__generated__/IssueListQuery.graphql';
 
-export function buildIssuesFilter(filters: IssueFiltersValue, labelIssueIds?: string[]) {
-  const conditions: Record<string, unknown>[] = [];
+export function buildIssuesFilter(filters: IssueFiltersValue, labelIssueIds?: string[]): issuesFilter | undefined {
+  const conditions: issuesFilter[] = [];
 
   if (filters.statuses.length > 0) {
     conditions.push({ status: { in: filters.statuses } });

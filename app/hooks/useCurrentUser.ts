@@ -11,7 +11,6 @@ export type CurrentUser = {
 
 export function useCurrentUser() {
   const [user, setUser] = useState<CurrentUser | null>(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const supabase = getSupabaseClient();
@@ -24,7 +23,6 @@ export function useCurrentUser() {
           avatar_url: session.user.user_metadata['avatar_url'] ?? null,
         });
       }
-      setLoading(false);
     });
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
@@ -65,5 +63,5 @@ export function useCurrentUser() {
     await getSupabaseClient().auth.signOut();
   }, []);
 
-  return { user, loading, signIn, signUp, logout };
+  return { user, signIn, signUp, logout };
 }

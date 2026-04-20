@@ -2,7 +2,7 @@
 
 import { useLazyLoadQuery, graphql } from 'react-relay';
 import { IssueListContent } from './IssueListContent';
-import type { IssueListQuery } from '../../__generated__/IssueListQuery.graphql';
+import type { IssueListQuery, issuesFilter } from '../../__generated__/IssueListQuery.graphql';
 
 const query = graphql`
   query IssueListQuery($first: Int!, $after: Cursor, $filter: issuesFilter) {
@@ -10,7 +10,7 @@ const query = graphql`
   }
 `;
 
-export function IssueList({ filter }: { filter?: Record<string, unknown> }) {
+export function IssueList({ filter }: { filter?: issuesFilter }) {
   const data = useLazyLoadQuery<IssueListQuery>(query, { first: 10, filter });
   return <IssueListContent queryRef={data} />;
 }

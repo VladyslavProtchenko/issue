@@ -96,7 +96,7 @@ export function IssueListContent({ queryRef }: { queryRef: IssueListContent_quer
   const edges = data.issuesCollection?.edges ?? [];
 
   const handleIntersect = useCallback(() => {
-    if (!isLoadingNext) loadNext(20);
+    if (!isLoadingNext) loadNext(10);
   }, [loadNext, isLoadingNext]);
 
   const loaderRef = useInfiniteScroll(handleIntersect, hasNext);

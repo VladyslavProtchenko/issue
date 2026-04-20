@@ -5,6 +5,7 @@ import { IssueFilters, type IssueFiltersValue } from './components/issues/IssueF
 import { IssueList } from './components/issues/IssueList';
 import { getSupabaseClient } from './lib/supabase/client';
 import { buildIssuesFilter } from './lib/filters';
+import type { issuesFilter } from './__generated__/IssueListQuery.graphql';
 
 export default function Home() {
   const [filters, setFilters] = useState<IssueFiltersValue>({
@@ -12,7 +13,7 @@ export default function Home() {
     priorities: [],
     labelIds: [],
   });
-  const [resolvedFilter, setResolvedFilter] = useState<Record<string, unknown> | undefined>(undefined);
+  const [resolvedFilter, setResolvedFilter] = useState<issuesFilter | undefined>(undefined);
   const [isResolving, setIsResolving] = useState(false);
   const abortRef = useRef<boolean>(false);
 
