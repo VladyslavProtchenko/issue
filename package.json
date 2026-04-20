@@ -7,7 +7,7 @@
     "build": "npm run fetch-schema && relay-compiler && next build",
     "start": "next start",
     "lint": "eslint",
-    "fetch-schema": "tsx --env-file=.env.local scripts/fetch-schema.ts",
+    "fetch-schema": "tsx scripts/fetch-schema.ts",
     "relay": "relay-compiler"
   },
   "dependencies": {
